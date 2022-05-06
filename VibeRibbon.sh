@@ -4,7 +4,7 @@
 #I found the information on how to make something readable for the emulator in this pastebin: https://pastebin.com/iFZKHbyH
 
 if [ $# -ne 3 ] || ! [ -d "$1" ]; then
-    printf "Usage:\n$0 \"Full path to the source directory\" \"Name of the album\" \"Extension of the source files (without the period)\"\n"
+    printf "Usage:\n$0 \"Path to the source directory\" \"Name of the album\" \"Extension of the source files (without the period)\"\n"
     exit 2
 fi
 
