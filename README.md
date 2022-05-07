@@ -42,7 +42,7 @@ And you can get both the japanese and PAL versions of the game on the internet a
     ```sh
     ls *.cue > Vibe.m3u
    ```
-   Uncomment  the line `echo "$name/$name.cue" >> ../Vibe.m3u` (by removing the #). It will add the new "disk" to the playlist.
+   Uncomment  the line `echo "$name/$name.cue" >> ../Vibe.m3u` (by removing the #). It will add the new "disk" to the playlist after creating it.
 
 
 ### Running the script
