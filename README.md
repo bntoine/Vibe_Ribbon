@@ -1,6 +1,7 @@
-## Vibe Ribbon, a simple music conversion script for the PS1 game Vib-Ribbon.
-I wanted to play custom songs in Vib-Ribbon because I think it's a pretty cool game so I made [a quick one liner](#as-a-one-liner) to convert my music.
-I based it on information I found in [this pastebin](https://pastebin.com/iFZKHbyH) and I thought that I might as well make a little script to do it for me and share it.
+## Vibe Ribbon, a simple music conversion shell script for the PS1 game Vib-Ribbon.
+I wanted to play custom songs in Vib-Ribbon because I think it's a pretty cool game so I made [a quick one liner](#as-a-one-liner) to convert my music and I thought that I might as well make a little script to do it for me and share it.
+
+I based it on information I found in [this pastebin](https://pastebin.com/iFZKHbyH) which is applicable to windows unlike my script that will only run on linux and mac unless you use [WSL](https://docs.microsoft.com/windows/wsl/install).
 
 I have successfully tested this script with the game running on [DuckStation](https://github.com/stenzek/duckstation/) and [RetroArch](https://www.retroarch.com/). I was not able to use the output files of this script on PCSX2.
 
