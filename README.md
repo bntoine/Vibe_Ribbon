@@ -1,5 +1,5 @@
-## Vibe Ribbon, a simple music conversion script for the PS1 game Vib Ribbon.
-I wanted to play custom songs in Vib Ribbon ibecause I think it's a pretty cool game so I made a quick one liner to convert my music that I based on information I found in [this pastebin](https://pastebin.com/iFZKHbyH) and I thought that I might as well make a little script to do it for me and share it.
+## Vibe Ribbon, a simple music conversion script for the PS1 game Vib-Ribbon.
+I wanted to play custom songs in Vib-Ribbon because I think it's a pretty cool game so I made a quick one liner to convert my music that I based on information I found in [this pastebin](https://pastebin.com/iFZKHbyH) and I thought that I might as well make a little script to do it for me and share it.
 
 I have successfully tested this script with the game running on [DuckStation](https://github.com/stenzek/duckstation/). I was not able to use the output files of this script on PCSX2.
 
@@ -8,7 +8,7 @@ You can get ffmpeg through your usual package manager.
 And you can get both the japanese and PAL versions of the game on the internet archive (I have however not tested them).
 
 ## Usage.
-**Dowload and setup**
+**Download and setup**
 ```sh
 git clone https://github.com/bntoine/Vibe_Ribbon.git
 cd Vibe_Ribbon
@@ -24,7 +24,7 @@ Beware, the format they will be converted to is quite a lot larger than most aud
 
 * The **Name** is the name that will be given to the folder the tracks will be placed in and the name that will be given to the cue file.
 
-* The **Source Extension** is the extention of the music files. It's required because I'm incomptetent and I don't want ffmpeg to try to convert non audio files. (This does mean you can only do one format at a time unless you modify the script slightly or do it manually)
+* The **Source Extension** is the extension of the music files. It's required because I'm incompetent and I don't want ffmpeg to try to convert non audio files. (This does mean you can only do one format at a time unless you modify the script slightly or do it manually)
 
 ## How it do?
 The script will convert your source music files to raw 16 bit signed pcm at 44100 Hz and create a cue sheet to tell the emulator how to read them.
