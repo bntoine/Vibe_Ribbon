@@ -2,7 +2,7 @@
 I wanted to play custom songs in Vib-Ribbon because I think it's a pretty cool game so I made [a quick one liner](#as-a-one-liner) to convert my music.
 I based it on information I found in [this pastebin](https://pastebin.com/iFZKHbyH) and I thought that I might as well make a little script to do it for me and share it.
 
-I have successfully tested this script with the game running on [DuckStation](https://github.com/stenzek/duckstation/). I was not able to use the output files of this script on PCSX2.
+I have successfully tested this script with the game running on [DuckStation](https://github.com/stenzek/duckstation/) and [RetroArch](https://www.retroarch.com/). I was not able to use the output files of this script on PCSX2.
 
 You need [ffmpeg](https://github.com/FFmpeg/FFmpeg), some music, and an emulator that accepts .cue files ([cue sheets](https://en.wikipedia.org/wiki/Cue_sheet_(computing))) as CDs.
 You can get ffmpeg through your usual package manager.
@@ -13,7 +13,7 @@ And you can get both the japanese and PAL versions of the game on the internet a
 ## Usage.
 ### Download and setup
 
-* Installing dependencies:
+* #### Installing dependencies
 
      For debian based distros (Ubuntu and Pop!_OS for example).
     ```sh
@@ -25,22 +25,27 @@ And you can get both the japanese and PAL versions of the game on the internet a
     ```
     If you use something else you probably know how to use it.
 
-* Making a directory for it:
 
-    While not necessary I recommend doing so to keep the script and it's output contained to a single folder (Could be convenient to put it where the game files are).
-    
-    ```sh
-    mkdir VibeRibbon
-    cd VibeRibbon
-    ```
-* Downloading the script and making it executable
+* #### Downloading the script and making it executable
+   
+   I recommend putting the script where the game files are especially if you want to [use m3u files with RetroArch](#optional-additional-steps-if-you-are-using-retroarch-untested-but-should-work).
     ```sh
     wget https://raw.githubusercontent.com/bntoine/Vibe_Ribbon/master/VibeRibbon.sh
     chmod +x VibeRibbon
     ```
 
+* #### Optional additional steps if you are using RetroArch (Untested but should work)
+    
+    M3U files are playlists and are used by retro arch to make it easier to switch between disks (usually for multi disk games) using one is more convenient when switching disks. To use one follow the two steps bellow.
 
-### Running the script:
+    Make a file named Vibe.m3u and put the filename of the game's cue file in it.
+    ```sh
+    ls *.cue > Vibe.m3u
+   ```
+   Uncomment  the line `echo "$name/$name.cue" >> ../Vibe.m3u` (by removing the #). It will add the new "disk" to the playlist.
+
+
+### Running the script
 
 ```sh
 # While in the same directory as the script.

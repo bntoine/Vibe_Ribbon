@@ -25,7 +25,10 @@ for i in *.$ext; do ffmpeg -v panic -i "$i" -ar 44100 -f s16le -acodec pcm_s16le
 #Aditional info on cue sheets: https://en.wikipedia.org/wiki/Cue_sheet_(computing)
 ls *.raw | awk '{printf "FILE \"%s\" BINARY\n  TRACK %02d AUDIO\n    INDEX 00 00:00:00\n    INDEX 01 00:00:00\n",$0, NR}' > "$name.cue"
 
-#cleanup
+#Adding the cue file to the M3U list for RetroArch.
+#echo "$name/$name.cue" >> ../Vibe.m3u
+
+#Cleanup
 rm *.$ext
 echo "Done!"
 exit 0
