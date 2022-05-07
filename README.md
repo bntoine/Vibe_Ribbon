@@ -15,17 +15,19 @@ And you can get both the japanese and PAL versions of the game on the internet a
 
 * Installing dependencies:
 
-     For debian based distros (Ubuntu and Pop!_OS for example)
+     For debian based distros (Ubuntu and Pop!_OS for example).
     ```sh
     sudo apt install ffmpeg
     ```
-    For most arch based distros (If you use something else you probably know how to use it)
+    For most arch based distros.
     ```sh
     sudo pacman -S ffmpeg
     ```
+    If you use something else you probably know how to use it.
+
 * Making a directory for it:
 
-    While not necessary I recommend doing so to keep the script and it's output contained to a single folder. (Could be convenient to put it where the game files are)
+    While not necessary I recommend doing so to keep the script and it's output contained to a single folder (Could be convenient to put it where the game files are).
     
     ```sh
     mkdir VibeRibbon
