@@ -1,13 +1,21 @@
-## Vibe Ribbon, a simple music conversion shell script for the PS1 game Vib-Ribbon.
+# Vibe Ribbon, a simple music conversion shell script for the PS1 game Vib-Ribbon.
+## For windows users.
+This script is only compatible with Linux and Mac, unless you use [WSL](https://docs.microsoft.com/windows/wsl/install). It's based on information I found in [this pastebin](https://pastebin.com/iFZKHbyH) which, unlike my script, is applicable to windows. You can also use [this website](https://vibcue.github.io/) to generate cue files. If you find using audacity to convert the files too annoying you can get [a windows build of ffmpeg](https://ffmpeg.org/download.html#build-windows) and run `ffmpeg -v panic -i in.mp3 -ar 44100 -f s16le -acodec pcm_s16le out.raw"` to convert your audio files.
+
+## General info.
+**Why does this exist?**
+
 I wanted to play custom songs in Vib-Ribbon because I think it's a pretty cool game so I made [a quick one liner](#as-a-one-liner) to convert my music and I thought that I might as well make a little script to do it for me and share it.
 
-This script is only compatible with Linux and Mac, unless you use [WSL](https://docs.microsoft.com/windows/wsl/install). It's based on information I found in [this pastebin](https://pastebin.com/iFZKHbyH) which, unlike my script, is applicable to windows.
+You can get both the japanese and PAL versions of the game on the internet archive (I have however not tested the versions hosted there).
+
+**What emulator does it work with?**
+
+In theory this should work with any emulator that uses cue files for disks.
 
 I have successfully tested this script with the game running on [DuckStation](https://github.com/stenzek/duckstation/) and [RetroArch](https://www.retroarch.com/). I was not able to use the output files of this script on PCSX2.
 
-You need [ffmpeg](https://github.com/FFmpeg/FFmpeg), some music, and an emulator that accepts .cue files ([cue sheets](https://en.wikipedia.org/wiki/Cue_sheet_(computing))) as CDs.
-You can get ffmpeg through your usual package manager.
-And you can get both the japanese and PAL versions of the game on the internet archive (I have however not tested them).
+
 
 
 
