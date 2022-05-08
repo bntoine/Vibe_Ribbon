@@ -3,7 +3,16 @@
 This script is only compatible with Linux and Mac, unless you use [WSL](https://docs.microsoft.com/windows/wsl/install). It's based on information I found in [this pastebin](https://pastebin.com/iFZKHbyH) which, unlike my script, is applicable to windows. You can also use [this website](https://vibcue.github.io/) to generate cue files. If you find using audacity to convert the files too annoying you can get [a windows build of ffmpeg](https://ffmpeg.org/download.html#build-windows) and run `ffmpeg -v panic -i in.mp3 -ar 44100 -f s16le -acodec pcm_s16le out.wav"` to convert your audio files.
 
 ## General info.
-**Why does this exist?**
+
+**Vibe Ribbon**
+
+Vibe Ribbon is a script that takes a folder with music files and gives you a folder with the music files in the right format and the corresponding cue file.
+
+**Vibe YT**
+
+Vibe YT is a second little script to directly turn youtube videos into wav files and a cue file. You need yt-dlp to run it.
+
+### Why does this exist?
 
 I wanted to play custom songs in Vib-Ribbon because I think it's a pretty cool game so I made [a quick one liner](#as-a-one-liner) to convert my music and I thought that I might as well make a little script to do it for me and share it.
 
@@ -34,13 +43,27 @@ I have successfully tested this script with the game running on [DuckStation](ht
     ```
     If you use something else you probably know how to use it.
 
+    * Only for Vibe YT
+    ```sh
+    #Check that you have python3 installed (If it's not installed just do sudo apt install python3)
+    python3 --version
+    sudo apt install python3-pip
+    sudo pip3 install yt-dlp
+    ```
 
-* #### Downloading the script and making it executable
-   
    I recommend putting the script where the game files are especially if you want to [use m3u files with RetroArch](#optional-additional-steps-if-you-are-using-retroarch-untested-but-should-work).
+* #### Downloading Vibe Ribbon and making it executable
+   
     ```sh
     wget https://raw.githubusercontent.com/bntoine/Vibe_Ribbon/master/VibeRibbon.sh
-    chmod +x VibeRibbon
+    chmod +x VibeRibbon.sh
+    ```
+
+* #### Downloading Vibe YT and making it executable
+   
+    ```sh
+    wget https://raw.githubusercontent.com/bntoine/Vibe_Ribbon/master/VibeYT.sh
+    chmod +x VibeYT.sh
     ```
 
 * #### Optional additional steps if you are using RetroArch (Untested but should work)
@@ -54,22 +77,29 @@ I have successfully tested this script with the game running on [DuckStation](ht
    Uncomment  the line `echo "$name/$name.cue" >> ../Vibe.m3u` (by removing the #). It will add the new "disk" to the playlist after creating it.
 
 
-### Running the script
+### Running Vibe Ribbon
 
 ```sh
 # While in the same directory as the script.
-./VibeRibbon Path_To_The_Source_Directory Name Source_Extension
+./VibeRibbon.sh Path_To_The_Source_Directory Name Source_Extension
 ```
 * The **Source Directory** should contain the songs you want to add to that "disk". Each file will be seen as a track by the game.
 Beware, the format they will be converted to is quite a lot larger than most audio files so don't add too many.
 
-* The **Name** is the name that will be given to the folder the tracks will be placed in and the name that will be given to the cue file.
+* The **Name** is the name that will be given to the folder the tracks will be placed in and the cue file.
 
 * The **Source Extension** is the extension of the music files. It's required because I'm incompetent and I don't want ffmpeg to try to convert non audio files. (This does mean you can only do one format at a time unless you modify the script slightly or do it manually)
 
+### Runing Vibe YT
+
+```sh
+# While in the same directory as the script.
+./VibeYT.sh Name "link1 link2 lin2 etc."
+```
+* The **Name** is the name that will be given to the folder the tracks will be placed in and the cue file.
 
 
-## As a one liner
+## As a one liner.
 The first three lines are where you define the variables. You can also just manually change the info in the command instead of using variables.
 ```sh
 sourcedir=Source_Directory
