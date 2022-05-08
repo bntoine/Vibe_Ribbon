@@ -1,5 +1,5 @@
 # Vibe Ribbon, a simple music conversion shell script for the PS1 game Vib-Ribbon.
-## For windows users.
+## Note for windows users.
 This script is only compatible with Linux and Mac, unless you use [WSL](https://docs.microsoft.com/windows/wsl/install). It's based on information I found in [this pastebin](https://pastebin.com/iFZKHbyH) which, unlike my script, is applicable to windows. You can also use [this website](https://vibcue.github.io/) to generate cue files. If you find using audacity to convert the files too annoying you can get [a windows build of ffmpeg](https://ffmpeg.org/download.html#build-windows) and run `ffmpeg -v panic -i in.mp3 -ar 44100 -f s16le -acodec pcm_s16le out.wav"` to convert your audio files.
 
 ## General info.
@@ -78,8 +78,12 @@ ext=mp3
 
 mkdir $name && cd $name && cp "$sourcedir"*.$ext . && for i in *.$ext; do ffmpeg -v panic -i "$i" -ar 44100 -f s16le -acodec pcm_s16le "${i%%.*}.wav"; done && ls *.wav | awk '{printf "FILE \"%s\" BINARY\n  TRACK %02d AUDIO\n    INDEX 01 00:00:00\n",$0, NR}' > "$name.cue" && rm *.$ext
 ```
+**Other useful one liner**
 
-
+This second command will make a cue sheet for all the wav files with the name of the directory it's in.
+```sh
+ls *.wav | awk '{printf "FILE \"%s\" BINARY\n  TRACK %02d AUDIO\n    INDEX 01 00:00:00\n",$0, NR}' > "${PWD##*/}.cue"
+```
 
 ## How it do?
 You will get a folder with the name you specified when executing the script and one file per song plus one .cue file. I made the folders [Source\_Directory](Source_Directory/) and [Example](Example/) to show the output.
