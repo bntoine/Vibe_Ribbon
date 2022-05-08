@@ -1,7 +1,7 @@
 ## Vibe Ribbon, a simple music conversion shell script for the PS1 game Vib-Ribbon.
 I wanted to play custom songs in Vib-Ribbon because I think it's a pretty cool game so I made [a quick one liner](#as-a-one-liner) to convert my music and I thought that I might as well make a little script to do it for me and share it.
 
-I based it on information I found in [this pastebin](https://pastebin.com/iFZKHbyH) which is applicable to windows unlike my script that will only run on linux and mac unless you use [WSL](https://docs.microsoft.com/windows/wsl/install).
+This script is only compatible with Linux and Mac, unless you use [WSL](https://docs.microsoft.com/windows/wsl/install). It's based on information I found in [this pastebin](https://pastebin.com/iFZKHbyH) which, unlike my script, is applicable to windows.
 
 I have successfully tested this script with the game running on [DuckStation](https://github.com/stenzek/duckstation/) and [RetroArch](https://www.retroarch.com/). I was not able to use the output files of this script on PCSX2.
 
@@ -20,7 +20,7 @@ And you can get both the japanese and PAL versions of the game on the internet a
     ```sh
     sudo apt install ffmpeg
     ```
-    For most arch based distros.
+    For most arch based distros. (Manjaro, Garuda, and SteamOS for example)
     ```sh
     sudo pacman -S ffmpeg
     ```
@@ -68,7 +68,7 @@ sourcedir=Source_Directory
 name=Example
 ext=mp3
 
-mkdir $name && cd $name && cp "$sourcedir"*.$ext . && for i in *.$ext; do ffmpeg -v panic -i "$i" -ar 44100 -f s16le -acodec pcm_s16le "${i%%.*}.raw"; done && ls *.raw | awk '{printf "FILE \"%s\" BINARY\n  TRACK %02d AUDIO\n    INDEX 00 00:00:00\n    INDEX 01 00:00:00\n",$0, NR}' > "$name.cue" && rm *.$ext
+mkdir $name && cd $name && cp "$sourcedir"*.$ext . && for i in *.$ext; do ffmpeg -v panic -i "$i" -ar 44100 -f s16le -acodec pcm_s16le "${i%%.*}.raw"; done && ls *.raw | awk '{printf "FILE \"%s\" BINARY\n  TRACK %02d AUDIO\n    INDEX 01 00:00:00\n",$0, NR}' > "$name.cue" && rm *.$ext
 ```
 
 
@@ -83,29 +83,24 @@ The script uses ffmpeg to convert your source music files to raw 16 bit signed p
 ```c
 FILE "1.raw" BINARY
   TRACK 01 AUDIO
-    INDEX 00 00:00:00
     INDEX 01 00:00:00
 FILE "2.raw" BINARY
   TRACK 02 AUDIO
-    INDEX 00 00:00:00
     INDEX 01 00:00:00
 FILE "3.raw" BINARY
   TRACK 03 AUDIO
-    INDEX 00 00:00:00
     INDEX 01 00:00:00
 FILE "4.raw" BINARY
   TRACK 04 AUDIO
-    INDEX 00 00:00:00
     INDEX 01 00:00:00
 FILE "5.raw" BINARY
   TRACK 05 AUDIO
-    INDEX 00 00:00:00
     INDEX 01 00:00:00
 ```
-You can see there are four lines per track. 
+You can see there are three lines per track. 
 
 The first one points the the file and gives it's format. In our case it's a raw binary file.
 
 The second line is the one that requires using awk instead of sed because we need to increment the number for each track. 
 
-The two last lines I just copied from [the pastebin](https://pastebin.com/iFZKHbyH) and I have no idea how this works it's probably explained in [the wikipedia article](https://en.wikipedia.org/wiki/Cue_sheet_(computing)) if you're interested.
+The last line says that the track starts at 00:00:00
