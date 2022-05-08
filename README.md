@@ -1,6 +1,6 @@
 # Vibe Ribbon, a simple music conversion shell script for the PS1 game Vib-Ribbon.
 ## For windows users.
-This script is only compatible with Linux and Mac, unless you use [WSL](https://docs.microsoft.com/windows/wsl/install). It's based on information I found in [this pastebin](https://pastebin.com/iFZKHbyH) which, unlike my script, is applicable to windows. You can also use [this website](https://vibcue.github.io/) to generate cue files. If you find using audacity to convert the files too annoying you can get [a windows build of ffmpeg](https://ffmpeg.org/download.html#build-windows) and run `ffmpeg -v panic -i in.mp3 -ar 44100 -f s16le -acodec pcm_s16le out.raw"` to convert your audio files.
+This script is only compatible with Linux and Mac, unless you use [WSL](https://docs.microsoft.com/windows/wsl/install). It's based on information I found in [this pastebin](https://pastebin.com/iFZKHbyH) which, unlike my script, is applicable to windows. You can also use [this website](https://vibcue.github.io/) to generate cue files. If you find using audacity to convert the files too annoying you can get [a windows build of ffmpeg](https://ffmpeg.org/download.html#build-windows) and run `ffmpeg -v panic -i in.mp3 -ar 44100 -f s16le -acodec pcm_s16le out.wav"` to convert your audio files.
 
 ## General info.
 **Why does this exist?**
@@ -76,7 +76,7 @@ sourcedir=Source_Directory
 name=Example
 ext=mp3
 
-mkdir $name && cd $name && cp "$sourcedir"*.$ext . && for i in *.$ext; do ffmpeg -v panic -i "$i" -ar 44100 -f s16le -acodec pcm_s16le "${i%%.*}.raw"; done && ls *.raw | awk '{printf "FILE \"%s\" BINARY\n  TRACK %02d AUDIO\n    INDEX 01 00:00:00\n",$0, NR}' > "$name.cue" && rm *.$ext
+mkdir $name && cd $name && cp "$sourcedir"*.$ext . && for i in *.$ext; do ffmpeg -v panic -i "$i" -ar 44100 -f s16le -acodec pcm_s16le "${i%%.*}.wav"; done && ls *.wav | awk '{printf "FILE \"%s\" BINARY\n  TRACK %02d AUDIO\n    INDEX 01 00:00:00\n",$0, NR}' > "$name.cue" && rm *.$ext
 ```
 
 
@@ -84,30 +84,30 @@ mkdir $name && cd $name && cp "$sourcedir"*.$ext . && for i in *.$ext; do ffmpeg
 ## How it do?
 You will get a folder with the name you specified when executing the script and one file per song plus one .cue file. I made the folders [Source\_Directory](Source_Directory/) and [Example](Example/) to show the output.
 
-The script uses ffmpeg to convert your source music files to raw 16 bit signed pcm at 44100 Hz (CD audio) and creates a cue sheet using awk to tell the emulator how to read them. 
+The script uses ffmpeg to convert your source music files to 16 bit signed pcm at 44100 Hz wav files (CD audio) and creates a cue sheet using awk to tell the emulator how to read them. 
 
 [The Example cue sheet](Example/Example.cue) look like this:
 
 ```c
-FILE "1.raw" BINARY
+FILE "1.wav" BINARY
   TRACK 01 AUDIO
     INDEX 01 00:00:00
-FILE "2.raw" BINARY
+FILE "2.wav" BINARY
   TRACK 02 AUDIO
     INDEX 01 00:00:00
-FILE "3.raw" BINARY
+FILE "3.wav" BINARY
   TRACK 03 AUDIO
     INDEX 01 00:00:00
-FILE "4.raw" BINARY
+FILE "4.wav" BINARY
   TRACK 04 AUDIO
     INDEX 01 00:00:00
-FILE "5.raw" BINARY
+FILE "5.wav" BINARY
   TRACK 05 AUDIO
     INDEX 01 00:00:00
 ```
 You can see there are three lines per track. 
 
-The first one points the the file and gives it's format. In our case it's a raw binary file.
+The first one points the the file and gives it's format. In our case it's a wav file.
 
 The second line is the one that requires using awk instead of sed because we need to increment the number for each track. 
 
