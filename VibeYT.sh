@@ -11,7 +11,7 @@ url=$2
 mkdir $name
 cd $name
 
-case $name in
+case $url in
 https://*soundcloud.com/*)
   yt-dlp -q $url
   for i in *.mp3; do ffmpeg -v panic -i "$i" -ar 44100 -f s16le -acodec pcm_s16le "${i%.*}.wav"; done;;
