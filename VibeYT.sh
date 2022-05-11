@@ -15,7 +15,7 @@ case $url in
 https://*soundcloud.com/*)
   yt-dlp -q $url
   for i in *.mp3; do ffmpeg -v panic -i "$i" -ar 44100 -f s16le -acodec pcm_s16le "${i%.*}.wav"; done;;
-https://*youtube.com/* | https://*.youtu.be/*)
+https://*youtube.com/* | https://*youtu.be/*)
   # Downloading the sound in the right format.
   yt-dlp -q -f 'bestaudio[ext=m4a]' -ciw -o '%(title)s.%(ext)s' --extract-audio --audio-quality 0 --audio-format wav $url;;
 *)
