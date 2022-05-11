@@ -10,7 +10,7 @@ Vibe Ribbon is a script that takes a folder with music files and gives you a fol
 
 **Vibe YT**
 
-Vibe YT is a second little script to directly turn youtube videos into wav files and a cue file. You need yt-dlp to run it.
+Vibe YT is a second little script to directly turn youtube and SoundCloud links into wav files and a cue file. You need yt-dlp to run it.
 
 ### Why does this exist?
 
