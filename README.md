@@ -116,11 +116,11 @@ ls *.wav | awk '{printf "FILE \"%s\" BINARY\n  TRACK %02d AUDIO\n    INDEX 01 00
 ```
 
 ## How it do?
-You will get a folder with the name you specified when executing the script and one file per song plus one .cue file. I made the folders [Source\_Directory](Source_Directory/) and [Example](Example/) to show the output.
+You will get a folder with the name you specified when executing the script and one file per song plus one .cue file. I made the folders [Source\_Directory](.Source_Directory/) and [Example](.Example/) to show the output.
 
 The script uses ffmpeg to convert your source music files to 16 bit signed pcm at 44100 Hz wav files (CD audio) and creates a cue sheet using awk to tell the emulator how to read them. 
 
-[The Example cue sheet](Example/Example.cue) look like this:
+[The Example cue sheet](.Example/Example.cue) look like this:
 
 ```c
 FILE "1.wav" BINARY
