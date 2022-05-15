@@ -6,7 +6,7 @@ This script is only compatible with Linux and Mac, unless you use [WSL](https://
 
 **Vibe Ribbon**
 
-Vibe Ribbon is a script that takes a folder with music files or URLs from supported platforms and gives you a folder with the music files in the right format with the corresponding cue file.
+Vibe Ribbon is a script that takes a folder with music files or URLs from supported platforms (currently Youtube, SoundCloud and Spotify) and gives you a folder of music files in the right format with the corresponding cue file.
 
 ### Why does this exist?
 
@@ -44,7 +44,7 @@ I have successfully tested this script with the game running on [DuckStation](ht
     # Check that you have python3 installed (If it's not installed just install it like you did ffmpeg)
     python3 --version
     ```
-    Install pip3 the same way you installed ffmpeg
+    **Install pip3 the same way you installed ffmpeg**
 * For Spotify
     ```sh
     sudo pip3 install spotdl # Pip can work without sudo but the package will only be installed for your user.
@@ -65,7 +65,7 @@ I have successfully tested this script with the game running on [DuckStation](ht
 
 * #### Optional additional steps if you are using RetroArch (Untested but should work)
     
-    M3U files are playlists and are used by retro arch to make it easier to switch between disks (usually for multi disk games) using one is more convenient when switching disks. To use one follow the two steps bellow.
+    M3U files are playlists and are used by retro arch to make it more convenient to switch between disks (usually for multi disk games). To use one follow the two steps bellow.
 
     Make a file named Vibe.m3u and put the filename of the game's cue file in it.
     ```sh
@@ -135,6 +135,6 @@ You can see there are three lines per track.
 
 The first one points the the file and gives it's format. In our case it's a wav file.
 
-The second line is the one that requires using awk instead of sed because we need to increment the number for each track. 
+The second line gives the number of the track and the type of data. In our case it's an audio file. (This is the one that requires using awk instead of sed because we need to increment the number for each track.) 
 
 The last line says that the track starts at 00:00:00
