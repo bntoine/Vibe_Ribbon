@@ -6,11 +6,7 @@ This script is only compatible with Linux and Mac, unless you use [WSL](https://
 
 **Vibe Ribbon**
 
-Vibe Ribbon is a script that takes a folder with music files and gives you a folder with the music files in the right format and the corresponding cue file.
-
-**Vibe YT**
-
-Vibe YT is a second little script to directly turn youtube and SoundCloud links into wav files and a cue file. You need yt-dlp to run it.
+Vibe Ribbon is a script that takes a folder with music files or URLs from supported platforms and gives you a folder with the music files in the right format with the corresponding cue file.
 
 ### Why does this exist?
 
@@ -43,12 +39,12 @@ I have successfully tested this script with the game running on [DuckStation](ht
     ```
     If you use something else you probably know how to use it.
 
-    * Only for Vibe YT
+    * If you want Youtube and SoundCloud functionality
     ```sh
-    #Check that you have python3 installed (If it's not installed just do sudo apt install python3)
+    # Check that you have python3 installed (If it's not installed just do sudo apt install python3)
     python3 --version
     sudo apt install python3-pip
-    sudo pip3 install yt-dlp
+    sudo pip3 install yt-dlp # Pip can work without sudo but you need to already have it installed
     ```
 
    I recommend putting the script where the game files are especially if you want to [use m3u files with RetroArch](#optional-additional-steps-if-you-are-using-retroarch-untested-but-should-work).
@@ -57,13 +53,6 @@ I have successfully tested this script with the game running on [DuckStation](ht
     ```sh
     wget https://raw.githubusercontent.com/bntoine/Vibe_Ribbon/master/VibeRibbon.sh
     chmod +x VibeRibbon.sh
-    ```
-
-* #### Downloading Vibe YT and making it executable
-   
-    ```sh
-    wget https://raw.githubusercontent.com/bntoine/Vibe_Ribbon/master/VibeYT.sh
-    chmod +x VibeYT.sh
     ```
 
 * #### Optional additional steps if you are using RetroArch (Untested but should work)
@@ -81,29 +70,19 @@ I have successfully tested this script with the game running on [DuckStation](ht
 
 ```sh
 # While in the same directory as the script.
-./VibeRibbon.sh Path_To_The_Source_Directory Name Source_Extension
+./VibeRibbon.sh Name  "Path or URL(s)"
 ```
-* The **Source Directory** should contain the songs you want to add to that "disk". Each file will be seen as a track by the game.
-Beware, the format they will be converted to is quite a lot larger than most audio files so don't add too many.
+* The **Path** should be the path to the directory containing the songs you want to add to that "disk". Each file will be seen as a track by the game.
+Beware, the format they will be converted to is quite a lot larger than most common codecs.
 
-* The **Name** is the name that will be given to the folder the tracks will be placed in and the cue file.
-
-* The **Source Extension** is the extension of the music files. It's required because I'm incompetent and I don't want ffmpeg to try to convert non audio files. (This does mean you can only do one format at a time unless you modify the script slightly or do it manually)
-
-### Runing Vibe YT
-
-```sh
-# While in the same directory as the script.
-./VibeYT.sh Name "link1 link2 lin2 etc."
-```
 * The **Name** is the name that will be given to the folder the tracks will be placed in and the cue file.
 
 
 ## As a one liner.
 The first three lines are where you define the variables. You can also just manually change the info in the command instead of using variables.
 ```sh
-sourcedir=Source_Directory
-name=Example
+sourcedir=.Source_Directory
+name=.Example
 ext=mp3
 
 mkdir $name && cd $name && cp "$sourcedir"*.$ext . && for i in *.$ext; do ffmpeg -v panic -i "$i" -ar 44100 -f s16le -acodec pcm_s16le "${i%%.*}.wav"; done && ls *.wav | awk '{printf "FILE \"%s\" BINARY\n  TRACK %02d AUDIO\n    INDEX 01 00:00:00\n",$0, NR}' > "$name.cue" && rm *.$ext
@@ -114,6 +93,11 @@ This second command will make a cue sheet for all the wav files with the name of
 ```sh
 ls *.wav | awk '{printf "FILE \"%s\" BINARY\n  TRACK %02d AUDIO\n    INDEX 01 00:00:00\n",$0, NR}' > "${PWD##*/}.cue"
 ```
+This one will download the songs in the right format from Youtube. Links are put at the end and should be separated by a space.
+```sh
+yt-dlp -q -f 'bestaudio[ext=m4a]' -ciw -o '%(title)s.%(ext)s' --extract-audio --audio-quality 0 --audio-format wav $links
+```
+
 
 ## How it do?
 You will get a folder with the name you specified when executing the script and one file per song plus one .cue file. I made the folders [Source\_Directory](.Source_Directory/) and [Example](.Example/) to show the output.
