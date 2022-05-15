@@ -27,7 +27,7 @@ I have successfully tested this script with the game running on [DuckStation](ht
 ## Usage.
 ### Download and setup
 
-* #### Installing dependencies
+* ### Installing dependencies
 
      For debian based distros (Ubuntu and Pop!_OS for example).
     ```sh
@@ -39,12 +39,20 @@ I have successfully tested this script with the game running on [DuckStation](ht
     ```
     If you use something else you probably know how to use it.
 
-    * If you want Youtube and SoundCloud functionality
+* ### To download songs from Youtube, SoundCloud and spotify.
     ```sh
-    # Check that you have python3 installed (If it's not installed just do sudo apt install python3)
+    # Check that you have python3 installed (If it's not installed just install it like you did ffmpeg)
     python3 --version
-    sudo apt install python3-pip
-    sudo pip3 install yt-dlp # Pip can work without sudo but you need to already have it installed
+    ```
+    Install pip3 the same way you installed ffmpeg
+* For Spotify
+    ```sh
+    sudo pip3 install spotdl # Pip can work without sudo but the package will only be installed for your user.
+    ```
+
+* For SoundCloud and Youtube
+    ```sh
+    sudo pip3 install yt-dlp # Pip can work without sudo but the package will only be installed for your user.
     ```
 
    I recommend putting the script where the game files are especially if you want to [use m3u files with RetroArch](#optional-additional-steps-if-you-are-using-retroarch-untested-but-should-work).
@@ -70,7 +78,7 @@ I have successfully tested this script with the game running on [DuckStation](ht
 
 ```sh
 # While in the same directory as the script.
-./VibeRibbon.sh Name  "Path or URL(s)"
+./VibeRibbon.sh Name "Path or URL(s)"
 ```
 * The **Path** should be the path to the directory containing the songs you want to add to that "disk". Each file will be seen as a track by the game.
 Beware, the format they will be converted to is quite a lot larger than most common codecs.

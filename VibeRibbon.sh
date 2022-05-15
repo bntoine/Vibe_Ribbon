@@ -25,6 +25,9 @@ https://*youtube.com/* | https://*youtu.be/*)
     # Downloading the sound in the right format.
     yt-dlp -q -f 'bestaudio[ext=m4a]' -ciw -o '%(title)s.%(ext)s' --extract-audio --audio-quality 0 --audio-format wav $2;;
 
+https://*spotify.com/*)
+    spotdl --output-format wav $2;;
+
 # Matching for other urls (other url paterns should be added above)
 http://* | https://*)
     #cd .. && rm -rf $name # Uncomment to delete folder on failure (not activated by default because I don't want to accidentally delete things)
