@@ -1,4 +1,7 @@
 # Vibe Ribbon, a simple music conversion shell script for the PS1 game Vib-Ribbon.
+
+<p align="center"><img alt="VibeRibbon Logo" src="VibeRibbonLogoLarge.png" height=200 width=200></p>
+
 ## Note for windows users.
 This script is only compatible with Linux and Mac, unless you use [WSL](https://docs.microsoft.com/windows/wsl/install). It's based on information I found in [this pastebin](https://pastebin.com/iFZKHbyH) which, unlike my script, is applicable to windows. You can also use [this website](https://vibcue.github.io/) to generate cue files. If you find using audacity to convert the files too annoying you can get [a windows build of ffmpeg](https://ffmpeg.org/download.html#build-windows) and run `ffmpeg -v panic -i in.mp3 -ar 44100 -f s16le -acodec pcm_s16le out.wav"` to convert your audio files.
 
@@ -138,3 +141,5 @@ The first one points the the file and gives it's format. In our case it's a wav 
 The second line gives the number of the track and the type of data. In our case it's an audio file. (This is the one that requires using awk instead of sed because we need to increment the number for each track.) 
 
 The last line says that the track starts at 00:00:00
+
+###### Fond used in the logo originally created by NanaOn-Sha for the video game Vib-Ribbon in 1999. Recreated by Robert Tumbolisu Buch in 2017.
