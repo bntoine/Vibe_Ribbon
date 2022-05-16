@@ -3,7 +3,7 @@
 <p align="center"><img alt="VibeRibbon Logo" src="VibeRibbonLogoLarge.png" height=200 width=200></p>
 
 ## Note for windows users.
-This script is only compatible with Linux and Mac, unless you use [WSL](https://docs.microsoft.com/windows/wsl/install). It's based on information I found in [this pastebin](https://pastebin.com/iFZKHbyH) which, unlike my script, is applicable to windows. You can also use [this website](https://vibcue.github.io/) to generate cue files. If you find using audacity to convert the files too annoying you can get [a windows build of ffmpeg](https://ffmpeg.org/download.html#build-windows) and run `ffmpeg -v panic -i in.mp3 -ar 44100 -f s16le -acodec pcm_s16le out.wav"` to convert your audio files.
+This script is natively compatible with Linux and Mac, and should be usable with [WSL](https://docs.microsoft.com/windows/wsl/install). It's based on information I found in [this pastebin](https://pastebin.com/iFZKHbyH) which is directly applicable to windows. You can also use [this website](https://vibcue.github.io/) to generate cue files.
 
 ## General info.
 
