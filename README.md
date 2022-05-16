@@ -142,4 +142,4 @@ The second line gives the number of the track and the type of data. In our case 
 
 The last line says that the track starts at 00:00:00
 
-###### Fond used in the logo originally created by NanaOn-Sha for the video game Vib-Ribbon in 1999. Recreated by Robert Tumbolisu Buch in 2017.
+###### Logo by DeathByAutoscroll#7617 . The font used in the logo originally created by NanaOn-Sha for the video game Vib-Ribbon in 1999. Recreated by Robert Tumbolisu Buch in 2017.
