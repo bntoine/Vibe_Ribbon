@@ -1,4 +1,4 @@
-# Vibe Ribbon, a simple music conversion shell script for the PS1 game Vib-Ribbon.
+# Vibe Ribbon, a simple music conversion bash script for the PS1 game Vib-Ribbon.
 
 <p align="center"><img alt="VibeRibbon Logo" src="VibeRibbonLogoLarge.png" height=200 width=200></p>
 
