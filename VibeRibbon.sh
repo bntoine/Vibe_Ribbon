@@ -17,6 +17,7 @@ source=$2
 case $source in
 # SoundCloud
 https://*soundcloud.com/*)
+    mkdir tmp
     yt-dlp -q --progress -o "tmp/%(title)s-%(id)s.mp3" $source
     for i in tmp/*.mp3; do ffmpeg -v error -i "$i" -ar 44100 -f s16le -acodec pcm_s16le "$(basename "${i%.*}").wav"; done;;
 
