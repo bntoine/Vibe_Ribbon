@@ -78,7 +78,17 @@ I have successfully tested this script with the game running on [DuckStation](ht
 
 
 ### Running Vibe Ribbon
-
+  * With Graphical Interface.
+  ```sh
+  # While in the same directory as the script
+  ./VibeRibbon.sh Name --gui
+  ```
+  The --gui argument will make your file browser pop up for you to select your music files.
+  * With TUI
+  
+  With the TUI you specify the path to the music folder or link(s) after the name. 
+  
+  If you put multiple links they should be separated by spaces between one set of quotes.
 ```sh
 # While in the same directory as the script.
 ./VibeRibbon.sh Name "Path or URL(s)"
