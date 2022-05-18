@@ -98,6 +98,8 @@ I have successfully tested this script with the game running on [DuckStation](ht
 
 * To play the custom songs you have to select the cue file when asked to insert a music CD. (Or use the keys you bound to changing disk if you are [using an m3u file](#optional-additional-steps-if-you-are-using-retroarch-untested-but-should-work))
 
+## How it do?
+You will get a folder with the name you specified when executing the script containing one file per song plus one .cue file. For more precise information on what the files are converted to and the format of the .cue file refer to [the pastebin](https://pastebin.com/iFZKHbyH).
 
 ## As a one liner.
 The first three lines are where you define the variables. You can also just manually change the info in the command instead of using variables.
@@ -120,36 +122,5 @@ yt-dlp -q -f 'bestaudio[ext=m4a]' -ciw -o '%(title)s.%(ext)s' --extract-audio --
 ```
 
 
-## How it do?
-You will get a folder with the name you specified when executing the script and one file per song plus one .cue file. I made the folders [Source\_Directory](.Source_Directory/) and [Example](.Example/) to show the output.
-
-The script uses ffmpeg to convert your source music files to 16 bit signed pcm at 44100 Hz wav files (CD audio) and creates a cue sheet using awk to tell the emulator how to read them. 
-
-[The Example cue sheet](.Example/Example.cue) look like this:
-
-```c
-FILE "1.wav" BINARY
-  TRACK 01 AUDIO
-    INDEX 01 00:00:00
-FILE "2.wav" BINARY
-  TRACK 02 AUDIO
-    INDEX 01 00:00:00
-FILE "3.wav" BINARY
-  TRACK 03 AUDIO
-    INDEX 01 00:00:00
-FILE "4.wav" BINARY
-  TRACK 04 AUDIO
-    INDEX 01 00:00:00
-FILE "5.wav" BINARY
-  TRACK 05 AUDIO
-    INDEX 01 00:00:00
-```
-You can see there are three lines per track. 
-
-The first one points the the file and gives it's format. In our case it's a wav file.
-
-The second line gives the number of the track and the type of data. In our case it's an audio file. (This is the one that requires using awk instead of sed because we need to increment the number for each track.) 
-
-The last line says that the track starts at 00:00:00
 
 ###### Logo by DeathByAutoscroll#7617 . The font used in the logo originally created by NanaOn-Sha for the video game Vib-Ribbon in 1999. Recreated by Robert Tumbolisu Buch in 2017.
