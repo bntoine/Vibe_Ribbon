@@ -29,6 +29,12 @@ https://*youtube.com/* | https://*youtu.be/*)
 https://*spotify.com/*)
     spotdl --output-format wav $source;;
 
+https://*bandcamp.com/*)
+    mkdir tmp
+    echo "Consider buying the track you'll get it in higher quality and you can use this script on the downloaded album"
+    yt-dlp -q --progress -o "tmp/%(title)s-%(id)s.%(ext)s" $source
+    for i in tmp/*; do ffmpeg -v error -i "$i" -ar 44100 -f s16le -acodec pcm_s16le "$(basename "${i%.*}").wav"; done;;
+
 # Matching for other urls (other url paterns should be added above)
 http://* | https://*)
     #cd .. && rm -rf $name # Uncomment to delete folder on failure (not activated by default because I don't want to accidentally delete things)

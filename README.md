@@ -9,7 +9,7 @@ This script is natively compatible with Linux and MacOS, and should be usable on
 
 **Vibe Ribbon**
 
-Vibe Ribbon is a script that takes a folder with music files or URLs from supported platforms (currently Youtube, SoundCloud and Spotify) and gives you a folder of music files in the right format with the corresponding cue file.
+Vibe Ribbon is a script that takes a folder with music files or URLs from supported platforms (currently Youtube, SoundCloud, bandcamp and Spotify) and gives you a folder of music files in the right format with the corresponding cue file.
 
 ### Why does this exist?
 
@@ -44,7 +44,7 @@ I have successfully tested this script with the game running on [DuckStation](ht
     ```
     If you use something else you probably know how to use it.
 
-* ### To download songs from Youtube, SoundCloud and spotify.
+* ### To download songs from Youtube, SoundCloud, bandcamp and spotify.
     ```sh
     sudo pip3 install yt-dlp spotdl # Pip can work without sudo but the package will only be installed for your user.
     ```
