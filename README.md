@@ -94,9 +94,9 @@ I have successfully tested this script with the game running on [DuckStation](ht
 ./VibeRibbon.sh Name "Path or URL(s)"
 ```
 * The **Path** should be the path to the directory containing the songs you want to add to that "disk". Each file will be seen as a track by the game.
-Beware, the format they will be converted to is quite a lot larger than most common codecs.
-
 * The **Name** is the name that will be given to the folder the tracks will be placed in and the cue file.
+
+* To play the custom songs you have to select the cue file when asked to insert a music CD. (Or use the keys you bound to changing disk if you are [using an m3u file](#optional-additional-steps-if-you-are-using-retroarch-untested-but-should-work))
 
 
 ## As a one liner.
