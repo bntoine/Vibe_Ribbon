@@ -2,8 +2,8 @@
 
 <p align="center"><img alt="VibeRibbon Logo" src="VibeRibbonLogoLarge.png" height=200 width=200></p>
 
-## Note for windows users.
-This script is natively compatible with Linux and Mac, and should be usable with [WSL](https://docs.microsoft.com/windows/wsl/install). It's based on information I found in [this pastebin](https://pastebin.com/iFZKHbyH) which is directly applicable to windows. You can also use [this website](https://vibcue.github.io/) to generate cue files.
+## Note for Windows users.
+This script is natively compatible with Linux and MacOS, and should be usable on Windows with [WSL](https://docs.microsoft.com/windows/wsl/install). It's based on information I found in [this pastebin](https://pastebin.com/iFZKHbyH) which is directly applicable to Windows. You can also use [this website](https://vibcue.github.io/) to generate cue files.
 
 ## General info.
 
@@ -16,6 +16,8 @@ Vibe Ribbon is a script that takes a folder with music files or URLs from suppor
 I wanted to play custom songs in Vib-Ribbon because I think it's a pretty cool game so I made [a quick one liner](#as-a-one-liner) to convert my music and I thought that I might as well make a little script to do it for me and share it.
 
 You can get both the japanese and PAL versions of the game on the internet archive (I have however not tested the versions hosted there).
+### How it do?
+You will get a folder with the name you specified when executing the script containing one file per song plus one .cue file. For more precise information on what the files are converted to and the format of the .cue file refer to [the pastebin](https://pastebin.com/iFZKHbyH).
 
 **What emulator does it work with?**
 
@@ -30,43 +32,31 @@ I have successfully tested this script with the game running on [DuckStation](ht
 ## Usage.
 ### Download and setup
 
-* ### Installing dependencies
+* ## Installing dependencies
 
-     For debian based distros (Ubuntu and Pop!_OS for example).
+    For debian based distros (Ubuntu and Pop!_OS for example).
     ```sh
-    sudo apt install ffmpeg
+    sudo apt install ffmpeg python3 python3-pip
     ```
     For most arch based distros. (Manjaro, Garuda, and SteamOS for example)
     ```sh
-    sudo pacman -S ffmpeg
+    sudo pacman -S ffmpeg python3 python3-pip
     ```
     If you use something else you probably know how to use it.
 
 * ### To download songs from Youtube, SoundCloud and spotify.
     ```sh
-    # Check that you have python3 installed (If it's not installed just install it like you did ffmpeg)
-    python3 --version
+    sudo pip3 install yt-dlp spotdl # Pip can work without sudo but the package will only be installed for your user.
     ```
-    **Install pip3 the same way you installed ffmpeg**
-* For Spotify
-    ```sh
-    sudo pip3 install spotdl # Pip can work without sudo but the package will only be installed for your user.
-    ```
-
-* For SoundCloud and Youtube
-    ```sh
-    sudo pip3 install yt-dlp # Pip can work without sudo but the package will only be installed for your user.
-    ```
-
+* ## Downloading Vibe Ribbon
+   Either download [VibeRibbon.sh](https://raw.githubusercontent.com/bntoine/Vibe_Ribbon/master/VibeRibbon.sh) manually or clone the repository with 
+   ```sh
+   git clone https://github.com/bntoine/Vibe_Ribbon.git
+   ```
+    
    I recommend putting the script where the game files are especially if you want to [use m3u files with RetroArch](#optional-additional-steps-if-you-are-using-retroarch-untested-but-should-work).
-* #### Downloading Vibe Ribbon and making it executable
-   
-    ```sh
-    wget https://raw.githubusercontent.com/bntoine/Vibe_Ribbon/master/VibeRibbon.sh
-    chmod +x VibeRibbon.sh
-    ```
 
-* #### Optional additional steps if you are using RetroArch (Untested but should work)
+* ## Optional additional steps if you are using RetroArch (Untested but should work)
     
     M3U files are playlists and are used by retro arch to make it more convenient to switch between disks (usually for multi disk games). To use one follow the two steps bellow.
 
@@ -77,29 +67,27 @@ I have successfully tested this script with the game running on [DuckStation](ht
    Uncomment  the line `echo "$name/$name.cue" >> ../Vibe.m3u` (by removing the #). It will add the new "disk" to the playlist after creating it.
 
 
-### Running Vibe Ribbon
-  * With Graphical Interface.
-  ```sh
-  # While in the same directory as the script
-  ./VibeRibbon.sh Name --gui
-  ```
-  The --gui argument will make your file browser pop up for you to select your music files.
-  * With TUI
+## Running Vibe Ribbon
+  * ### With Graphical Interface.
+    ```sh
+    # While in the same directory as the script
+    ./VibeRibbon.sh Name --gui
+    ```
+    The --gui argument will make your file browser pop up for you to select your music files.
+  * ### With TUI
   
-  With the TUI you specify the path to the music folder or link(s) after the name. 
+    With the TUI you specify the path to the music folder or link(s) after the name. 
   
-  If you put multiple links they should be separated by spaces between one set of quotes.
-```sh
-# While in the same directory as the script.
-./VibeRibbon.sh Name "Path or URL(s)"
-```
-* The **Path** should be the path to the directory containing the songs you want to add to that "disk". Each file will be seen as a track by the game.
-* The **Name** is the name that will be given to the folder the tracks will be placed in and the cue file.
+    If you put multiple links they should be separated by spaces between one set of quotes.
+    ```sh
+    # While in the same directory as the script.
+    ./VibeRibbon.sh Name "Path or URL(s)"
+    ```
+    * The **Path** should be the path to the directory containing the songs you want to add to that "disk". Each file will be seen as a track by the game.
+    * The **Name** is the name that will be given to the folder the tracks will be placed in and the cue file.
 
-* To play the custom songs you have to select the cue file when asked to insert a music CD. (Or use the keys you bound to changing disk if you are [using an m3u file](#optional-additional-steps-if-you-are-using-retroarch-untested-but-should-work))
+  * To play the custom songs you have to select the cue file when asked to insert a music CD. (Or use the keys you bound to changing disk if you are [using an m3u file](#optional-additional-steps-if-you-are-using-retroarch-untested-but-should-work))
 
-## How it do?
-You will get a folder with the name you specified when executing the script containing one file per song plus one .cue file. For more precise information on what the files are converted to and the format of the .cue file refer to [the pastebin](https://pastebin.com/iFZKHbyH).
 
 ## As a one liner.
 The first three lines are where you define the variables. You can also just manually change the info in the command instead of using variables.
@@ -123,4 +111,4 @@ yt-dlp -q -f 'bestaudio[ext=m4a]' -ciw -o '%(title)s.%(ext)s' --extract-audio --
 
 
 
-###### Logo by DeathByAutoscroll#7617 . The font used in the logo originally created by NanaOn-Sha for the video game Vib-Ribbon in 1999. Recreated by Robert Tumbolisu Buch in 2017.
+##### Logo by DeathByAutoscroll#7617 . The font used in the logo was originally created by NanaOn-Sha for the video game Vib-Ribbon in 1999. Recreated by Robert Tumbolisu Buch in 2017.
