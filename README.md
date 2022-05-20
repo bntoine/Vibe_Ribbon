@@ -1,6 +1,6 @@
 # Vibe Ribbon, a simple music conversion bash script for the PS1 game Vib-Ribbon.
 
-<p align="center"><img alt="VibeRibbon Logo" src="VibeRibbonLogoLarge.png" height=200 width=200></p>
+<p align="center"><img alt="VibeRibbon Banner" src="VibeRibbon_Banner.png" height=300 width=500></p>
 
 ## Note for Windows users.
 This script is natively compatible with Linux and MacOS, and should be usable on Windows with [WSL](https://docs.microsoft.com/windows/wsl/install). It's based on information I found in [this pastebin](https://pastebin.com/iFZKHbyH) which is directly applicable to Windows. You can also use [this website](https://vibcue.github.io/) to generate cue files.
